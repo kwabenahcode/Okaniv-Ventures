@@ -33,8 +33,8 @@ export default function Footer() {
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                     <div>
                         <Link href="/" className="flex items-center gap-3">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#C81010] text-white">
-                                <ShieldCheck size={26} />
+                            <div className="flex h-12 w-12 items-center justify-center  text-white">
+                                <img src="/images/logo.png" alt="logo" />
                             </div>
 
                             <div>

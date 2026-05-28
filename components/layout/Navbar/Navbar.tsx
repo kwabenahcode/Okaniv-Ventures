@@ -23,8 +23,9 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
                 <Link href="/" className="flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#C81010] text-white">
-                        <span className="text-xl font-black">O</span>
+                    <div className="flex h-11 w-11 items-center justify-center text-white">
+                        {/* <span className="text-xl font-black">O</span> */}
+                        <img src="/images/logo.png" alt="" />
                     </div>
 
                     <div className="leading-tight">
