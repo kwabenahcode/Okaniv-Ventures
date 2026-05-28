@@ -67,7 +67,7 @@ export default function Navbar() {
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: 15, scale: 0.97 }}
                                     transition={{ duration: 0.25, ease: "easeOut" }}
-                                    className="absolute left-1/2 top-10 w-170 -translate-x-1/2 rounded-2xl border border-black/10 bg-white p-4 shadow-2xl"
+                                    className="absolute left-1/2 top-10 w-[680px] -translate-x-1/2 rounded-2xl border border-black/10 bg-white p-4 shadow-2xl"
                                 >
                                     <div className="grid grid-cols-2 gap-3">
                                         {services.map((service) => {

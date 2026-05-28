@@ -1,3 +1,4 @@
+import CTA from "@/components/CTA/CTA";
 import Hero from "@/components/HomeHero/Hero";
 import ServicesAbout from "@/components/OurServicesSection/Services";
 import RecentProjects from "@/components/ProjectSection/RecentProjects";
@@ -11,6 +12,7 @@ export default function Home() {
       <ServicesAbout />
       <RecentProjects />
       <Testimonials />
+      <CTA />
     </main>
   );
 }
