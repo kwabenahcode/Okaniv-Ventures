@@ -111,16 +111,16 @@ export default function ServicesAbout() {
                         </Link>
                     </motion.div>
 
-                    {/* Image */}
+                    {/*------------------------- Image------------------------------------ */}
                     <motion.div
                         initial={{ opacity: 0, y: 35 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
-                        className="relative min-h-[380px] overflow-hidden rounded-3xl shadow-xl lg:min-h-full"
+                        className="relative min-h-95 overflow-hidden rounded-3xl shadow-xl lg:min-h-full"
                     >
                         <Image
-                            src="/images/electric-fence.jpg"
+                            src="/images/e-fence.jpg"
                             alt="Electric fence installation by Okaniv Ventures"
                             fill
                             className="object-cover"
@@ -132,7 +132,7 @@ export default function ServicesAbout() {
                         </div>
                     </motion.div>
 
-                    {/* Why Choose Us */}
+                    {/* ----------------------Why Choose Us --------------------------*/}
                     <motion.div
                         initial={{ opacity: 0, x: 35 }}
                         whileInView={{ opacity: 1, x: 0 }}
