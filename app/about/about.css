@@ -1,0 +1,9 @@
+.about{
+    text-align: center;
+    border: 1px solid red;
+    margin-top: 4rem;
+    margin-left: 30rem;
+    border-radius: 6px;
+    padding: 3px;
+    width: 20%;
+}

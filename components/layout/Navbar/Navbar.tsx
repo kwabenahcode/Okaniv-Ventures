@@ -17,9 +17,10 @@ const navLinks = [
 export default function Navbar() {
     const [servicesOpen, setServicesOpen] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white backdrop-blur-md">
+        <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
                 <Link href="/" className="flex items-center gap-3">
                     <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#C81010] text-white">
@@ -52,13 +53,25 @@ export default function Navbar() {
                         onMouseEnter={() => setServicesOpen(true)}
                         onMouseLeave={() => setServicesOpen(false)}
                     >
-                        <button className="flex items-center gap-1 text-sm font-semibold text-black transition hover:text-[#C81010]">
-                            Services
-                            <ChevronDown
-                                size={16}
-                                className={`transition ${servicesOpen ? "rotate-180" : ""}`}
-                            />
-                        </button>
+                        <div className="flex items-center gap-1">
+                            <Link
+                                href="/services"
+                                className="text-sm font-semibold text-black transition hover:text-[#C81010]"
+                            >
+                                Services
+                            </Link>
+
+                            <button
+                                type="button"
+                                onClick={() => setServicesOpen(!servicesOpen)}
+                                className="text-black transition hover:text-[#C81010]"
+                            >
+                                <ChevronDown
+                                    size={16}
+                                    className={`transition ${servicesOpen ? "rotate-180" : ""}`}
+                                />
+                            </button>
+                        </div>
 
                         <AnimatePresence>
                             {servicesOpen && (
@@ -79,7 +92,7 @@ export default function Navbar() {
                                                     href={service.href}
                                                     className="group flex gap-4 rounded-xl p-4 transition hover:bg-[#C81010]"
                                                 >
-                                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C81010]/10 text-[#C81010] transition group-hover:bg-white group-hover:text-[#C81010]">
+                                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C81010]/10 text-[#C81010] transition group-hover:bg-white">
                                                         <Icon size={22} />
                                                     </div>
 
@@ -120,59 +133,127 @@ export default function Navbar() {
                 </Link>
 
                 <button
-                    onClick={() => setMobileOpen(!mobileOpen)}
+                    onClick={() => setMobileOpen(true)}
                     className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#C81010] text-white lg:hidden"
                 >
-                    {mobileOpen ? <X /> : <Menu />}
+                    <Menu />
                 </button>
             </nav>
 
             <AnimatePresence>
                 {mobileOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden border-t border-black/10 bg-white lg:hidden"
-                    >
-                        <div className="space-y-2 px-5 py-5">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="block rounded-xl px-4 py-3 text-sm font-bold text-black hover:bg-[#C81010] hover:text-white"
-                                >
-                                    {link.label}
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setMobileOpen(false)}
+                            className="fixed inset-0 z-40 bg-black/60 lg:hidden"
+                        />
+
+                        <motion.aside
+                            initial={{ x: "-100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "-100%" }}
+                            transition={{ duration: 0.35, ease: "easeOut" }}
+                            className="fixed left-0 top-0 z-50 h-screen w-[85%] max-w-sm overflow-y-auto bg-white px-5 py-5 shadow-2xl lg:hidden"
+                        >
+                            <div className="flex items-center justify-between">
+                                <Link href="/" onClick={() => setMobileOpen(false)}>
+                                    <h2 className="text-xl font-black text-[#C81010]">OKANIV</h2>
+                                    <p className="text-xs font-bold uppercase text-black">
+                                        Ventures Limited
+                                    </p>
                                 </Link>
-                            ))}
 
-                            <div className="pt-2">
-                                <p className="px-4 pb-2 text-xs font-black uppercase text-[#C81010]">
-                                    Services
-                                </p>
+                                <button
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C81010] text-white"
+                                >
+                                    <X />
+                                </button>
+                            </div>
 
-                                {services.map((service) => (
+                            <div className="mt-8 space-y-2">
+                                {navLinks.slice(0, 2).map((link) => (
                                     <Link
-                                        key={service.href}
-                                        href={service.href}
+                                        key={link.href}
+                                        href={link.href}
                                         onClick={() => setMobileOpen(false)}
-                                        className="block rounded-xl px-4 py-3 text-sm font-semibold text-black/80 hover:bg-[#C81010] hover:text-white"
+                                        className="block rounded-xl px-4 py-3 text-sm font-bold text-black hover:bg-[#C81010] hover:text-white"
                                     >
-                                        {service.title}
+                                        {link.label}
+                                    </Link>
+                                ))}
+
+                                <div>
+                                    <div className="flex items-center justify-between rounded-xl hover:bg-[#C81010]">
+                                        <Link
+                                            href="/services"
+                                            onClick={() => setMobileOpen(false)}
+                                            className="flex-1 px-4 py-3 text-sm font-bold text-black hover:text-white"
+                                        >
+                                            Services
+                                        </Link>
+
+                                        <button
+                                            onClick={() =>
+                                                setMobileServicesOpen(!mobileServicesOpen)
+                                            }
+                                            className="px-4 py-3 text-black hover:text-white"
+                                        >
+                                            <ChevronDown
+                                                size={18}
+                                                className={`transition ${mobileServicesOpen ? "rotate-180" : ""
+                                                    }`}
+                                            />
+                                        </button>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {mobileServicesOpen && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                className="overflow-hidden pl-3"
+                                            >
+                                                {services.map((service) => (
+                                                    <Link
+                                                        key={service.href}
+                                                        href={service.href}
+                                                        onClick={() => setMobileOpen(false)}
+                                                        className="block rounded-xl px-4 py-3 text-sm font-semibold text-black/70 hover:bg-[#C81010] hover:text-white"
+                                                    >
+                                                        {service.title}
+                                                    </Link>
+                                                ))}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+
+                                {navLinks.slice(2).map((link) => (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="block rounded-xl px-4 py-3 text-sm font-bold text-black hover:bg-[#C81010] hover:text-white"
+                                    >
+                                        {link.label}
                                     </Link>
                                 ))}
                             </div>
 
                             <Link
                                 href="tel:+2330256499835"
-                                className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#C81010] px-5 py-3 text-sm font-bold text-white"
+                                className="mt-8 flex items-center justify-center gap-2 rounded-full bg-[#C81010] px-5 py-3 text-sm font-bold text-white"
                             >
                                 <Phone size={17} />
                                 Call Us Now
                             </Link>
-                        </div>
-                    </motion.div>
+                        </motion.aside>
+                    </>
                 )}
             </AnimatePresence>
         </header>

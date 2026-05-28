@@ -7,6 +7,9 @@ import {
     ShieldCheck,
 } from "lucide-react";
 
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
 const services = [
     "CCTV Camera Installation",
     "CCTV Maintenance",
@@ -52,14 +55,14 @@ export default function Footer() {
                                 href="#"
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-[#C81010]"
                             >
-                                {/* <Facebook size={18} /> */}
+                                <FaFacebookF size={18} />
                             </Link>
 
                             <Link
                                 href="#"
                                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition hover:bg-[#C81010]"
                             >
-                                {/* <Instagram size={18} /> */}
+                                <FaInstagram size={18} />
                             </Link>
                         </div>
                     </div>

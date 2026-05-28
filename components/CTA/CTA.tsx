@@ -37,25 +37,26 @@ export default function CTA() {
                             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C81010] px-7 py-4 text-sm font-black text-white transition hover:bg-white hover:text-black"
                         >
                             <Phone size={18} />
-                            Call Now
+                            Call: +233 (0) 25 649 9835
+
                         </Link>
 
                         <Link
                             href="https://wa.me/233256499835"
                             target="_blank"
-                            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-black text-white transition hover:border-[#C81010] hover:bg-[#C81010]"
+                            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-7 py-4 text-sm font-black text-white transition hover:border-[#1e9d3a] hover:bg-[#1e9d3a]"
                         >
                             <MessageCircle size={18} />
                             WhatsApp Us
                         </Link>
 
-                        <Link
+                        {/* <Link
                             href="/contact"
                             className="inline-flex items-center justify-center gap-2 text-sm font-black text-white transition hover:text-[#C81010]"
                         >
                             Request Quote
                             <ArrowRight size={18} />
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </motion.div>
